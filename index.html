@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Fraktal — f(z) = z² + c</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app">
+  <aside class="panel">
+    <h1>Fraktal — <small style="font-size:12px;color:var(--muted)">f(z) = z² + c</small></h1>
+    <p class="small">Drag untuk geser, pinch untuk zoom. Pilih Mandelbrot atau Julia.</p>
+
+    <label>Mode</label>
+    <select id="mode">
+      <option value="mandelbrot">Mandelbrot</option>
+      <option value="julia">Julia</option>
+    </select>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div>
+        <label>c — Real</label>
+        <input type="number" id="creal" step="0.001" value="-0.8"/>
+      </div>
+      <div>
+        <label>c — Imag</label>
+        <input type="number" id="cimag" step="0.001" value="0.156"/>
+      </div>
+    </div>
+
+    <label>Iterasi maksimum: <span id="iterLabel" style="float:right">500</span></label>
+    <input type="range" id="maxIter" min="50" max="3000" value="500"/>
+
+    <label>Palette</label>
+    <select id="palette">
+      <option value="classic">Classic</option>
+      <option value="fire">Fire</option>
+      <option value="ice">Ice</option>
+      <option value="psychedelic">Psychedelic</option>
+      <option value="mono">Mono</option>
+    </select>
+
+    <label style="margin-top:8px">
+      <input type="checkbox" id="smooth" checked style="margin-right:8px"/>Smooth coloring
+    </label>
+
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="renderBtn">Render</button>
+      <button class="btn ghost" id="resetBtn">Reset view</button>
+    </div>
+
+    <div class="row" style="margin-top:10px">
+      <button class="btn ghost" id="downloadBtn">Download PNG</button>
+      <button class="btn ghost" id="presetBtn">Random preset</button>
+    </div>
+  </aside>
+
+  <main class="viewport panel" style="padding:0;">
+    <div id="canvasWrap">
+      <div class="toolbar">Mode: <strong id="modeTxt">Mandelbrot</strong></div>
+      <canvas id="fractalCanvas"></canvas>
+      <div class="status" id="status">Ready</div>
+    </div>
+  </main>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
